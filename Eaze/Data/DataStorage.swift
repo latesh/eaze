@@ -107,7 +107,7 @@ final class DataStorage {
     var dynamicThrottleBreakpoint = 0 // min 1.7.0
     
     // 112 MSP_PID
-    var PIDs: [[Double]] = []
+    var PIDs: [[Int]] = []
     
     // 114 MSP_MISC
     var midRc                   = 0
@@ -172,7 +172,7 @@ final class DataStorage {
                     "Harakiri"]
         } else {
             return ["MultiWii (2.3)",
-                    "Multiwii (rewrite)",
+                    "Betaflight",
                     "LuxFloat"]
         }
     }
@@ -183,7 +183,7 @@ final class DataStorage {
     init() {
         // create pids array
         for _ in 0...9 {
-            PIDs.append([0.0, 0.0, 0.0])
+            PIDs.append([0, 0, 0])
         }
     }
 }

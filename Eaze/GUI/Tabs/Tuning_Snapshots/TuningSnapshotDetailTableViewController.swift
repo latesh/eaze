@@ -59,9 +59,9 @@ class TuningSnapshotDetailTableViewController: GroupedTableViewController {
         snapshot.PIDController = valueOfTextfield(2, inSection: 0, atRow: 2).intValue
         
         for i in 0...9 {
-            snapshot.PIDs[i][0] = valueOfTextfield(2, inSection: 1, atRow: i).doubleValue
-            snapshot.PIDs[i][1] = valueOfTextfield(3, inSection: 1, atRow: i).doubleValue
-            snapshot.PIDs[i][2] = valueOfTextfield(4, inSection: 1, atRow: i).doubleValue
+            snapshot.PIDs[i][0] = valueOfTextfield(2, inSection: 1, atRow: i).intValue
+            snapshot.PIDs[i][1] = valueOfTextfield(3, inSection: 1, atRow: i).intValue
+            snapshot.PIDs[i][2] = valueOfTextfield(4, inSection: 1, atRow: i).intValue
         }
         
         snapshot.rcRate              = valueOfTextfield(2, inSection: 2, atRow: 0).doubleValue
@@ -127,9 +127,9 @@ class TuningSnapshotDetailTableViewController: GroupedTableViewController {
             // PIDs
             cell = Bundle.main.loadNibNamed("TripleFieldCell", owner: self, options: nil)?[0] as! UITableViewCell
             (cell.viewWithTag(1) as! UILabel).text = ["Roll", "Pitch", "Yaw", "Alt", "Pos", "PosR", "NavR", "Level", "Mag", "Level"][indexPath.row]
-            (cell.viewWithTag(2) as! UITextField).text = snapshot.PIDs[indexPath.row][0].stringWithDecimals(3)
-            (cell.viewWithTag(3) as! UITextField).text = snapshot.PIDs[indexPath.row][1].stringWithDecimals(3)
-            (cell.viewWithTag(4) as! UITextField).text = snapshot.PIDs[indexPath.row][2].stringWithDecimals(3)
+            (cell.viewWithTag(2) as! UITextField).text = String(snapshot.PIDs[indexPath.row][0])
+            (cell.viewWithTag(3) as! UITextField).text = String(snapshot.PIDs[indexPath.row][1])
+            (cell.viewWithTag(4) as! UITextField).text = String(snapshot.PIDs[indexPath.row][2])
             
         } else {
             // misc data

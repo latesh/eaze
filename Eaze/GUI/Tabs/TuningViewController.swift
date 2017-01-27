@@ -108,17 +108,17 @@ final class TuningViewController: UIViewController, ConfigScreen, MSPUpdateSubsc
         // fields with max value of 255
         for field in [rollD, pitchD, yawD, altD, velD, levelD] {
             field?.maxValue = 255
-            field?.minValue = 0.0
+            field?.minValue = 0
             field?.decimal = 0
             field?.increment = 1
         }
         
         // fields with max value of 25.5
         for field in [rollP, pitchP, yawP, levelP, altP, velP, posRP, navRP, magP] {
-            field?.maxValue = 25.5
-            field?.minValue = 0.0
-            field?.decimal = 1
-            field?.increment = 0.1
+            field?.maxValue = 255
+            field?.minValue = 0
+            field?.decimal = 0
+            field?.increment = 1
         }
         
         // fields with max value of 2.55
@@ -131,10 +131,10 @@ final class TuningViewController: UIViewController, ConfigScreen, MSPUpdateSubsc
         
         // fields with max value of .255
         for field in [rollI, pitchI, yawI, altI, velI, levelI, posRD, navRD] {
-            field?.maxValue = 0.255
-            field?.minValue = 0.0
-            field?.decimal = 3
-            field?.increment = 0.001
+            field?.maxValue = 255
+            field?.minValue = 0
+            field?.decimal = 0
+            field?.increment = 1
         }
         
         // field with max value of 1.0
@@ -277,9 +277,9 @@ final class TuningViewController: UIViewController, ConfigScreen, MSPUpdateSubsc
             
         case MSP_PID:
             for (index, item) in PIDFields.enumerated() {
-                item[0]?.doubleValue = dataStorage.PIDs[index][0]
-                item[1]?.doubleValue = dataStorage.PIDs[index][1]
-                item[2]?.doubleValue = dataStorage.PIDs[index][2]
+                item[0]?.intValue = dataStorage.PIDs[index][0]
+                item[1]?.intValue = dataStorage.PIDs[index][1]
+                item[2]?.intValue = dataStorage.PIDs[index][2]
             }
             
         //case MSP_PIDNAMES:
@@ -416,7 +416,7 @@ final class TuningViewController: UIViewController, ConfigScreen, MSPUpdateSubsc
         // MSP_SET_PID
         for (i, fields) in PIDFields.enumerated() {
             for (j, field) in fields.enumerated() {
-                dataStorage.PIDs[i][j] = field?.doubleValue ?? 0.0
+                dataStorage.PIDs[i][j] = field?.intValue ?? 0
             }
         }
         

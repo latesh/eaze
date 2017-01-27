@@ -30,7 +30,7 @@ final class TuningSnapshot: NSObject {
         dynamicThrottleBreakpoint = 0
     
     /// PID data in default order (ROLL / PITCH / YAW / ALT / POS / POSR / NAVR / LEVEL / MAG / VEL)
-    var PIDs: [[Double]] = []
+    var PIDs: [[Int]] = []
 
 
     // MARK: - Functions
@@ -88,9 +88,9 @@ final class TuningSnapshot: NSObject {
             // get PID array
             var needle = 0
             for _ in 0...9 {
-                var triple: [Double] = []
+                var triple: [Int] = []
                 for _ in 0...2 {
-                    triple.append(snapshot["pid"][needle++].doubleValue!)
+                    triple.append(snapshot["pid"][needle++].intValue!)
                 }
                 PIDs.append(triple)
             }
@@ -124,7 +124,7 @@ final class TuningSnapshot: NSObject {
         var needle = 0
         for triple in PIDs {
             for value in triple {
-                snapshot["pid"][needle++].doubleValue = value
+                snapshot["pid"][needle++].intValue = value
             }
         }
         

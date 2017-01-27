@@ -439,17 +439,17 @@ final class MSPInterpreter: BluetoothSerialDelegate {
             for i in 0 ..< data.count/3 {
                 switch i {
                 case 0, 1, 2, 3, 7, 8, 9:
-                    dataStorage.PIDs[i][0] = Double(data[needle]) / 10
-                    dataStorage.PIDs[i][1] = Double(data[needle+1]) / 1000
-                    dataStorage.PIDs[i][2] = Double(data[needle+2])
+                    dataStorage.PIDs[i][0] = Int(data[needle])
+                    dataStorage.PIDs[i][1] = Int(data[needle+1])
+                    dataStorage.PIDs[i][2] = Int(data[needle+2])
                 case 4:
-                    dataStorage.PIDs[i][0] = Double(data[needle]) / 100
-                    dataStorage.PIDs[i][1] = Double(data[needle+1]) / 100
-                    dataStorage.PIDs[i][2] = Double(data[needle+2]) / 1000
+                    dataStorage.PIDs[i][0] = Int(data[needle])
+                    dataStorage.PIDs[i][1] = Int(data[needle+1])
+                    dataStorage.PIDs[i][2] = Int(data[needle+2])
                 case 5, 6:
-                    dataStorage.PIDs[i][0] = Double(data[needle]) / 10
-                    dataStorage.PIDs[i][1] = Double(data[needle+1]) / 100
-                    dataStorage.PIDs[i][2] = Double(data[needle+2]) / 1000
+                    dataStorage.PIDs[i][0] = Int(data[needle])
+                    dataStorage.PIDs[i][1] = Int(data[needle+1])
+                    dataStorage.PIDs[i][2] = Int(data[needle+2])
                 default:
                     log("Unexpected data length while interpeting MSP_PID: \(i)")
                 }
@@ -687,19 +687,19 @@ final class MSPInterpreter: BluetoothSerialDelegate {
             for (i, triplet) in dataStorage.PIDs.enumerated() {
                 switch i {
                 case 0, 1, 2, 3, 7, 9:
-                    buffer.append(UInt8(triplet[0] * 10.0))
-                    buffer.append(UInt8(triplet[1] * 1000.0))
+                    buffer.append(UInt8(triplet[0]))
+                    buffer.append(UInt8(triplet[1]))
                     buffer.append(UInt8(triplet[2]))
                 case 4:
-                    buffer.append(UInt8(triplet[0] * 100.0))
-                    buffer.append(UInt8(triplet[1] * 100.0))
+                    buffer.append(UInt8(triplet[0]))
+                    buffer.append(UInt8(triplet[1]))
                     buffer.append(UInt8(0))
                 case 5, 6:
-                    buffer.append(UInt8(triplet[0] * 10.0))
-                    buffer.append(UInt8(triplet[1] * 100.0))
-                    buffer.append(UInt8(triplet[2] * 1000.0))
+                    buffer.append(UInt8(triplet[0]))
+                    buffer.append(UInt8(triplet[1]))
+                    buffer.append(UInt8(triplet[2]))
                 case 8:
-                    buffer.append(UInt8(triplet[0] * 10.0))
+                    buffer.append(UInt8(triplet[0]))
                     buffer.append(UInt8(0))
                     buffer.append(UInt8(0))
                 default:
