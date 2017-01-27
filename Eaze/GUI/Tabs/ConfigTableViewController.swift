@@ -14,7 +14,7 @@ final class ConfigTableViewController: UITableViewController {
     
     fileprivate let cellTitles  = [["General", "Receiver", "ESC/Motors", "Serial Ports", "Modes", "Receiver Input"],
                                ["App Preferences", "Developer Console", "About This App"]],
-                sectionTitles = ["Cleanflight", "App"],
+                sectionTitles = ["Betaflight", "App"],
                 identifiers = [["General", "Receiver", "Motors", "Serial", "Modes", "ReceiverInput"],
                                ["AppPrefs", "AppLog", "AboutApp"]]
     
